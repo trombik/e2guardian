@@ -13,8 +13,9 @@ override_dh_auto_configure:
 	NOCONFIGURE=1 ./autogen.sh
 	dh_auto_configure $(DHFLAGS) -- \
 	    --prefix=/usr \
-	    --enable-clamav=yes \
-	    --enable-clamd=yes \
+	    --enable-clamav=no \
+	    --enable-clamd=no \
+	    --enable-pcre=yes \
 	    --with-proxyuser=e2guardian \
 	    --with-proxygroup=e2guardian \
 	    --sysconfdir=/etc \
