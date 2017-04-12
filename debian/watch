@@ -1,0 +1,3 @@
+version=3
+opts=filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/e2guardian-$1.tar.gz/ \
+https://github.com/e2guardian/e2guardian/tags .*/archive/v?([\d\.]+).tar.gz

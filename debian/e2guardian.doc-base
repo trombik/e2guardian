@@ -1,0 +1,19 @@
+Document: e2guardian
+Title: e2guardian Content Filtering System
+Section: Network/Web Browsing
+
+Format: Text
+Files: /usr/share/doc/e2guardian/AuthPlugins.gz
+       /usr/share/doc/e2guardian/ContentScanners.gz
+       /usr/share/doc/e2guardian/DownloadManagers.gz
+       /usr/share/doc/e2guardian/FAQ.gz
+       /usr/share/doc/e2guardian/Plugins.gz
+       /usr/share/doc/e2guardian/UPGRADING
+       /usr/share/doc/e2guardian/certificate_errors
+       /usr/share/doc/e2guardian/extended_rooms
+       /usr/share/doc/e2guardian/port_auth
+       /usr/share/doc/e2guardian/ssl_mitm
+
+Format: HTML
+Index: /usr/share/doc/e2guardian/FAQ.html
+Files: /usr/share/doc/e2guardian/FAQ.html

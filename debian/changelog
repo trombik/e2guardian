@@ -1,0 +1,5 @@
+e2guardian (3.4.0.3-1) unstable; urgency=medium
+
+  * Initial release to Debian. (Closes: #836281).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 07 Sep 2016 16:37:57 +0200

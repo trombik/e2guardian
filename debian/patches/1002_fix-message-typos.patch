@@ -1,0 +1,130 @@
+Description: Fix several spelling errors in upstream code base.
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Forwarded: https://github.com/e2guardian/e2guardian/pull/144
+
+--- a/src/FatController.cpp
++++ b/src/FatController.cpp
+@@ -130,7 +130,7 @@
+         old_umask = umask(S_IWGRP | S_IWOTH);
+         fs = fopen(o.dstat_location.c_str(), "a");
+         if (fs) {
+-            fprintf(fs, "time		childs 	busy	free	wait	births	deaths	conx	conx/s\n");
++            fprintf(fs, "time		children 	busy	free	wait	births	deaths	conx	conx/s\n");
+         } else {
+             syslog(LOG_ERR, "Unable to open dstats_log %s for writing\nContinuing with logging\n",
+                 o.dstat_location.c_str());
+@@ -1962,7 +1962,7 @@
+                                         else
+                                             fprintf(mail, "Subject: %s\n", o.fg[filtergroup]->contentsubject.c_str());
+ 
+-                                        fprintf(mail, "%i violation%s ha%s occured within %i seconds.\n",
++                                        fprintf(mail, "%i violation%s ha%s occurred within %i seconds.\n",
+                                             curv_tmp,
+                                             (curv_tmp == 1) ? "" : "s",
+                                             (curv_tmp == 1) ? "s" : "ve",
+@@ -2828,7 +2828,7 @@
+     if (reloadconfig) {
+         syslog(LOG_INFO, "Reconfiguring E2guardian: done");
+     } else {
+-        syslog(LOG_INFO, "Started sucessfully.");
++        syslog(LOG_INFO, "Started successfully.");
+         //dystat = new stat_rec;
+         dystat->start();
+     }
+--- a/src/FDTunnel.cpp
++++ b/src/FDTunnel.cpp
+@@ -121,7 +121,7 @@
+         } else
+ #endif
+             if (selectEINTR(maxfd + 1, &inset, NULL, NULL, &t) < 1) {
+-            break; // an error occured or it timed out so end while()
++            break; // an error occurred or it timed out so end while()
+         }
+ 
+         if (FD_ISSET(fdfrom, &inset)) { // fdfrom is ready to be read from
+@@ -135,7 +135,7 @@
+ 
+             // read as much as is available
+             if (rc < 0) {
+-                break; // an error occured so end the while()
++                break; // an error occurred so end the while()
+             } else if (!rc) {
+                 done = true; // none received so pipe is closed so flag it
+             } else { // some data read
+@@ -147,7 +147,7 @@
+                 t = timeout; // take a copy to work with
+ 
+                 if (selectEINTR(fdto + 1, NULL, &outset, NULL, &t) < 1) {
+-                    break; // an error occured or timed out so end while()
++                    break; // an error occurred or timed out so end while()
+                 }
+ 
+                 if (FD_ISSET(fdto, &outset)) { // fdto ready to write to
+@@ -179,7 +179,7 @@
+             rc = sockto.readFromSocket(buff, sizeof(buff), 0, 0, false);
+ 
+             if (rc < 0) {
+-                break; // an error occured so end the while()
++                break; // an error occurred so end the while()
+             } else if (!rc) {
+                 done = true; // none received so pipe is closed so flag it
+                 break;
+@@ -191,7 +191,7 @@
+                 t = timeout; // take a copy to work with
+ 
+                 if (selectEINTR(fdfrom + 1, NULL, &outset, NULL, &t) < 1) {
+-                    break; // an error occured or timed out so end while()
++                    break; // an error occurred or timed out so end while()
+                 }
+ 
+                 if (FD_ISSET(fdfrom, &outset)) { // fdfrom ready to write to
+--- a/src/downloadmanagers/default.cpp
++++ b/src/downloadmanagers/default.cpp
+@@ -202,7 +202,7 @@
+             // grab a block of input, doubled each time
+ 
+             if (rc <= 0) {
+-                break; // an error occured so end the while()
++                break; // an error occurred so end the while()
+                 // or none received so pipe is closed
+             } else {
+                 bytesremaining -= rc;
+--- a/src/downloadmanagers/fancy.cpp
++++ b/src/downloadmanagers/fancy.cpp
+@@ -375,7 +375,7 @@
+             // grab a block of input, doubled each time
+ 
+             if (rc <= 0) {
+-                break; // an error occured so end the while()
++                break; // an error occurred so end the while()
+                 // or none received so pipe is closed
+             } else {
+                 /*if (d->data != temp)
+--- a/src/downloadmanagers/trickle.cpp
++++ b/src/downloadmanagers/trickle.cpp
+@@ -235,7 +235,7 @@
+             // grab a block of input, doubled each time
+ 
+             if (rc <= 0) {
+-                break; // an error occured so end the while()
++                break; // an error occurred so end the while()
+                 // or none received so pipe is closed
+             } else {
+                 bytesremaining -= rc;
+--- a/src/OptionContainer.cpp
++++ b/src/OptionContainer.cpp
+@@ -1102,12 +1102,12 @@
+             exit(1);
+         }
+         if (infile.fail()) {
+-            syslog(LOG_ERR, " Unexpected failue on read");
++            syslog(LOG_ERR, " Unexpected failure on read");
+             std::cerr << " Unexpected failure on read: " << filename.c_str() << std::endl;
+             exit(1);
+         }
+         if (infile.bad()) {
+-            syslog(LOG_ERR, " Unexpected badbit failue on read");
++            syslog(LOG_ERR, " Unexpected badbit failure on read");
+             std::cerr << " Unexpected badbit failure on read: " << filename.c_str() << std::endl;
+             exit(1);
+         }

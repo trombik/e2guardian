@@ -1,0 +1,5 @@
+doc/UPGRADING
+notes/certificate_errors
+notes/extended_rooms
+notes/port_auth
+notes/ssl_mitm

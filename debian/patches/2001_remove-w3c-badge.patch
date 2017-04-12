@@ -1,0 +1,20 @@
+Description: Remove external links to W3C (avoid privacy breach)
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+--- a/contrib/template.html
++++ b/contrib/template.html
+@@ -119,14 +119,6 @@
+ 					<span style="font-size:8pt">
+ 						Powered by <a href="http://www.e2guardian.org" target="_blank">E2Guardian</a>
+ 					</span>
+-					<p>
+-						<a href="http://validator.w3.org/check?uri=referer">
+-							<img class="valid" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" />
+-						</a>
+-						<a href="http://jigsaw.w3.org/css-validator/">
+-							<img class="valid" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" />
+-						</a>
+-					</p>
+ 				</td>
+ 			</tr>
+ 		</table>

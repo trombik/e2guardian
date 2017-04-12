@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "purge" ]; then
+	deluser e2guardian > /dev/null || true
+	rm -rf /var/log/e2guardian
+	rm -rf /etc/e2guardian
+fi
+
+#DEBHELPER#
