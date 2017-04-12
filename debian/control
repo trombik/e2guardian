@@ -12,6 +12,8 @@ Build-Depends: autotools-dev,
                quilt,
                libclamav-dev (>= 0.90),
                libpcre3-dev,
+               libssl1.0.0,
+               libssl-dev,
                zlib1g-dev,
 Standards-Version: 3.9.8
 Vcs-Git: https://anonscm.debian.org/git/debian-edu/pkg-team/e2guardian.git
