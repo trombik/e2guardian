@@ -1,0 +1,192 @@
+Description: Fix clean rules in Makefiles. Make build idempotent.
+Author: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+--- a/configs/authplugins/Makefile.am
++++ b/configs/authplugins/Makefile.am
+@@ -1,9 +1,8 @@
+ DISTCLEANFILES = Makefile.in
++CLEANFILES = ip.conf
+ 
+ DGDATADIR = $(DGCONFDIR)/authplugins
+ 
+-SUBDIRS = .
+-
+ FLISTS = proxy-basic.conf ident.conf ip.conf proxy-digest.conf \
+ 	 port.conf 
+ 
+--- a/configs/contentscanners/Makefile.am
++++ b/configs/contentscanners/Makefile.am
+@@ -1,12 +1,14 @@
+ DISTCLEANFILES = Makefile.in \
+ 		       clamdscan.conf icapscan.conf \
+ 		       kavdscan.conf commandlinescan.conf
++CLEANFILES = avastdscan.conf \
++             clamdscan.conf \
++             commandlinescan.conf \
++             icapscan.conf \
++             kavdscan.conf
+ 
+ DGDATADIR = $(DGCONFDIR)/contentscanners
+ 
+-SUBDIRS = .
+-
+-
+ FLISTS = 
+ 
+ if ENABLE_CLAMD
+--- a/configs/Makefile.am
++++ b/configs/Makefile.am
+@@ -1,8 +1,9 @@
+-DISTCLEANFILES = Makefile.in \
+-e2guardian.conf \
+-e2guardianf1.conf
++DISTCLEANFILES = Makefile.in
+ 
+-SUBDIRS = lists downloadmanagers authplugins .
++CLEANFILES = e2guardian.conf \
++             e2guardianf1.conf
++
++SUBDIRS = lists downloadmanagers authplugins
+ 
+ if NEED_CSCONFIGS
+ SUBDIRS += contentscanners
+--- a/configs/downloadmanagers/Makefile.am
++++ b/configs/downloadmanagers/Makefile.am
+@@ -1,10 +1,9 @@
+ DISTCLEANFILES = Makefile.in \
+ 		       default.conf fancy.conf trickle.conf
++CLEANFILES = default.conf fancy.conf trickle.conf
+ 
+ DGDATADIR = $(DGCONFDIR)/downloadmanagers
+ 
+-SUBDIRS = .
+-
+ FLISTS = default.conf
+ 
+ if ENABLE_FANCYDM
+--- a/configs/lists/Makefile.am
++++ b/configs/lists/Makefile.am
+@@ -1,10 +1,11 @@
+-DISTCLEANFILES = Makefile.in \
+-		bannedphraselist bannedsitelist bannedurllist \
+-		exceptionphraselist nocheckcertsitelist weightedphraselist
++DISTCLEANFILES = Makefile.in
++
++CLEANFILES = bannedphraselist bannedsitelist bannedurllist \
++             exceptionphraselist nocheckcertsitelist weightedphraselist
+ 
+ DGDATADIR = $(DGCONFDIR)/lists
+ 
+-SUBDIRS = phraselists . authplugins bannedrooms
++SUBDIRS = phraselists authplugins bannedrooms
+ 
+ if NEED_CSLISTS
+ SUBDIRS += contentscanners
+--- a/data/scripts/Makefile.am
++++ b/data/scripts/Makefile.am
+@@ -1,6 +1,10 @@
+ DISTCLEANFILES = Makefile.in
+-
+-SUBDIRS= .
++CLEANFILES = bsd-init \
++             e2guardian \
++             e2guardian.service \
++             logrotation \
++             solaris-init \
++             systemv-init
+ 
+ DATATOPDIR = $(datadir)/$(PACKAGE_NAME)/scripts
+ 
+@@ -23,4 +27,3 @@
+ 	for l in $(FLISTS) ; do \
+ 		rm -f $(DESTDIR)$(DATATOPDIR)/$$l ; \
+ 	done
+-
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,11 +1,14 @@
+-DISTCLEANFILES = Makefile.in \
+-aclocal.m4 \
+-config.guess \
+-config.h.in \
+-config.sub \
+-configure \
+-dgconfig.h.in \
+-configure
+-SUBDIRS= . doc data configs src
++DISTCLEANFILES = README \
++                 Makefile.in \
++                 aclocal.m4 \
++                 config.guess \
++                 config.h.in \
++                 config.sub \
++                 configure \
++                 dgconfig.h.in \
++                 compile \
++                 configure
++
++SUBDIRS= doc data configs src
+ 
+ EXTRA_DIST = autogen.sh UPGRADING
+--- a/configs/lists/authplugins/Makefile.am
++++ b/configs/lists/authplugins/Makefile.am
+@@ -2,8 +2,6 @@
+ 
+ DGDATADIR = $(DGCONFDIR)/lists/authplugins
+ 
+-SUBDIRS = .
+-
+ WLISTS = ipgroups portgroups
+ 
+ EXTRA_DIST = $(WLISTS)
+--- a/configs/lists/bannedrooms/Makefile.am
++++ b/configs/lists/bannedrooms/Makefile.am
+@@ -2,8 +2,6 @@
+ 
+ DGDATADIR = $(DGCONFDIR)/lists/bannedrooms
+ 
+-SUBDIRS = .
+-
+ WLISTS = default
+ 
+ EXTRA_DIST = $(WLISTS)
+--- a/configs/lists/contentscanners/Makefile.am
++++ b/configs/lists/contentscanners/Makefile.am
+@@ -2,8 +2,6 @@
+ 
+ DGDATADIR = $(DGCONFDIR)/lists/contentscanners
+ 
+-SUBDIRS = .
+-
+ WLISTS = exceptionvirusmimetypelist exceptionvirusextensionlist \
+          exceptionvirussitelist exceptionvirusurllist
+ 
+--- a/configs/lists/downloadmanagers/Makefile.am
++++ b/configs/lists/downloadmanagers/Makefile.am
+@@ -2,8 +2,6 @@
+ 
+ DGDATADIR = $(DGCONFDIR)/lists/downloadmanagers
+ 
+-SUBDIRS = .
+-
+ WLISTS = managedmimetypelist managedextensionlist
+ 
+ EXTRA_DIST = $(WLISTS)
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -1,6 +1,6 @@
+ DISTCLEANFILES = Makefile.in
+ 
+-SUBDIRS= languages . scripts
++SUBDIRS= languages scripts
+ 
+ DATATOPDIR = $(datadir)/$(PACKAGE_NAME)
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,4 @@
+-clean_SUBDIRS= . downloadmanagers contentscanners authplugins
++clean_SUBDIRS= downloadmanagers contentscanners authplugins
+ DISTCLEANFILES = Makefile.in
+ 
+ # A MASSIVE thank you to Lawrence Manning for pointing out the

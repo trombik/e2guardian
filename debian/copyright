@@ -1,0 +1,214 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: e2guardian
+Upstream-Contact: https://github.com/e2guardian/e2guardian/issues
+Source: https://github.com/e2guardian/e2guardian/
+
+Files: src/Auth.cpp
+ src/Auth.hpp
+ src/BackedStore.cpp
+ src/BackedStore.hpp
+ src/BaseSocket.cpp
+ src/BaseSocket.hpp
+ src/ConfigVar.cpp
+ src/ConfigVar.hpp
+ src/ConnectionHandler.cpp
+ src/ConnectionHandler.hpp
+ src/ContentScanner.cpp
+ src/ContentScanner.hpp
+ src/DataBuffer.cpp
+ src/DataBuffer.hpp
+ src/DownloadManager.cpp
+ src/DownloadManager.hpp
+ src/DynamicIPList.cpp
+ src/DynamicIPList.hpp
+ src/DynamicURLList.cpp
+ src/DynamicURLList.hpp
+ src/FDFuncs.cpp
+ src/FDFuncs.hpp
+ src/FDTunnel.cpp
+ src/FDTunnel.hpp
+ src/FOptionContainer.cpp
+ src/FOptionContainer.hpp
+ src/FatController.cpp
+ src/FatController.hpp
+ src/HTMLTemplate.cpp
+ src/HTMLTemplate.hpp
+ src/HTTPHeader.cpp
+ src/HTTPHeader.hpp
+ src/IPList.cpp
+ src/IPList.hpp
+ src/ImageContainer.cpp
+ src/ImageContainer.hpp
+ src/LanguageContainer.cpp
+ src/LanguageContainer.hpp
+ src/ListContainer.cpp
+ src/ListContainer.hpp
+ src/ListManager.cpp
+ src/ListManager.hpp
+ src/NaughtyFilter.cpp
+ src/NaughtyFilter.hpp
+ src/OptionContainer.cpp
+ src/OptionContainer.hpp
+ src/Plugin.hpp
+ src/RegExp.cpp
+ src/RegExp.hpp
+ src/Socket.cpp
+ src/Socket.hpp
+ src/SocketArray.cpp
+ src/SocketArray.hpp
+ src/String.cpp
+ src/String.hpp
+ src/SysV.cpp
+ src/SysV.hpp
+ src/UDSocket.cpp
+ src/UDSocket.hpp
+ src/authplugins/digest.cpp
+ src/authplugins/ident.cpp
+ src/authplugins/ip.cpp
+ src/authplugins/ntlm.cpp
+ src/authplugins/proxy.cpp
+ src/contentscanners/avastdscan.cpp
+ src/contentscanners/clamdscan.cpp
+ src/contentscanners/commandlinescan.cpp
+ src/contentscanners/icapscan.cpp
+ src/contentscanners/kavdscan.cpp
+ src/downloadmanagers/default.cpp
+ src/downloadmanagers/fancy.cpp
+ src/downloadmanagers/trickle.cpp
+ src/e2guardian.cpp
+Copyright: 2014, Philip Pearce [E2BN Protex](http://protex.e2bn.org) Ltd.
+           Frederic Bourgeois (http://numsys.eu)
+License: GPL-2+~OpenSSL
+
+Files: AUTHORS
+ ChangeLog
+ DGChangeLog
+ INSTALL
+ Makefile.am
+ NEWS
+ README.md
+ UPGRADING
+ autogen.sh
+ configure.ac
+ e2guardian.release
+ tarballup.sh
+ DGnotes/*
+ configs/*
+ contrib/*
+ data/languages/*
+ data/scripts/*
+ data/Makefile.am
+ data/e2guardian.pl
+ data/blockedflash.swf
+ data/transparent1x1.gif
+ doc/*
+ m4/ac_finalize.m4
+ notes/*
+ src/Makefile.am
+ src/CertificateAuthority.cpp
+ src/CertificateAuthority.hpp
+ .gitignore
+ .clang-format
+Copyright: 2014, Philip Pearce [E2BN Protex](http://protex.e2bn.org) Ltd.
+           Frederic Bourgeois (http://numsys.eu)
+License: GPL-2+~OpenSSL
+Comment:
+ No explicit license nor copyright information is provided in these
+ files. We assume that the same license and copyright information as found
+ in README.md applies to these files.
+
+Files: src/authplugins/dnsauth.cpp
+ src/authplugins/port.cpp
+Copyright: 2014, Philip Pearce [E2BN Protex](http://protex.e2bn.org) Ltd.
+           Frederic Bourgeois (http://numsys.eu)
+License: GPL-2+
+Comment:
+ Assuming copyright holders as provided in README.md.
+
+Files: m4/aci.m4
+Copyright: 2000, 2001, Free Software Foundation, Inc.
+License: FSF~unlimited
+
+Files: src/md5.cpp
+ src/md5.hpp
+Copyright: 1995-1997, 1999-2000, Free Software Foundation, Inc.
+License: LGPL-2+
+
+Files: debian/*
+Copyright: 2002, Jonathan Hall <jonhall@futureks.net>
+           2003-2004, Matthias Klose <doko@debian.org>
+           2004-2012, Alexander Wirt <formorer@debian.org>
+           2016, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+License: GPL-2+~OpenSSL or GPL-2+
+
+License: GPL-2+~OpenSSL
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License version 2 as published
+ by the Free Software Foundation.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.
+ .
+ In addition, as a special exception, the copyright holders of this work,
+ give permission to link the code of its release of e2guardian with the
+ OpenSSL project's "OpenSSL" library (or with modified versions of it
+ that use the same license as the "OpenSSL" library), and distribute the
+ linked executables.  You must obey the GNU General Public License in all
+ respects for all of the code used other than "OpenSSL".  If you modify
+ this file, you may extend this exception to your version of the file,
+ but you are not obligated to do so.  If you do not wish to do so, delete
+ this exception statement from your version.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ (version 2), can be found in /usr/share/common-licenses/GPL-2.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License version 2 as published
+ by the Free Software Foundation.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ (version 2), can be found in /usr/share/common-licenses/GPL-2.
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Library General Public
+ License (version 2), can be found in /usr/share/common-licenses/LGPL-2.
+
+License: FSF~unlimited
+ This file is free software; the Free Software Foundation
+ gives unlimited permission to copy and/or distribute it,
+ with or without modifications, as long as this notice is preserved.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+ even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ PARTICULAR PURPOSE.

@@ -1,0 +1,51 @@
+#!/usr/bin/make -f
+
+DHFLAGS=--parallel
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+%:
+	dh $@ --with quilt $(DHFLAGS)
+
+override_dh_auto_configure:
+	NOCONFIGURE=1 ./autogen.sh
+	dh_auto_configure $(DHFLAGS) -- \
+	    --prefix=/usr \
+	    --enable-clamav=yes \
+	    --enable-clamd=yes \
+	    --with-proxyuser=e2guardian \
+	    --with-proxygroup=e2guardian \
+	    --sysconfdir=/etc \
+	    --localstatedir=/var \
+	    --enable-icap=yes \
+	    --enable-commandline=yes \
+	    --enable-email=yes \
+	    --enable-ntlm=yes \
+	    --enable-trickledm=yes \
+	    --mandir=\$${prefix}/share/man \
+	    --infodir=\$${prefix}/share/info
+
+override_dh_install:
+	dh_install --fail-missing
+
+override_dh_installexamples:
+	dh_installexamples
+	chmod a-x debian/e2guardian/usr/share/doc/e2guardian/examples/template.html
+
+override_dh_auto_install:
+	dh_auto_install
+	mkdir -p debian/e2guardian/etc/e2guardian/
+	mkdir -p debian/e2guardian/usr/lib/cgi-bin/
+	mv debian/e2guardian/usr/share/e2guardian/languages/ debian/e2guardian/etc/e2guardian/
+	mv debian/e2guardian/usr/share/e2guardian/e2guardian.pl debian/e2guardian/usr/lib/cgi-bin/
+	chmod 755 debian/e2guardian/usr/lib/cgi-bin/e2guardian.pl
+	rm -rf debian/e2guardian/usr/share/e2guardian/scripts/
+	rm -f debian/e2guardian/etc/e2guardian/logrotation
+
+override_dh_installinit:
+	dh_installinit --error-handler=init_failed
+
+get-orig-source:
+	uscan --noconf --force-download --rename --download-current-version --destdir=..
